@@ -1,10 +1,11 @@
-
+import React from "react";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <React.Fragment>
+      <HomePage />
+    </React.Fragment>
   );
 }
 
