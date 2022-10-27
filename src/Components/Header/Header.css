@@ -48,6 +48,7 @@
   display: flex;
   align-items: center;
   color: white;
+text-decoration: none;
 }
 
 .header__basketCount {

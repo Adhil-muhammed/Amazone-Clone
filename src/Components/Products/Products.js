@@ -1,24 +1,31 @@
 import React from "react";
-
-function Products() {
+import "./Products.css";
+function Products({ id, title, price, rating, image }) {
+  // var imge
   return (
     <React.Fragment>
-      <div className="products_cards">
-        <div className="product_infoTittle">
-          <h3>Revamp your home in </h3>
-          <p>
-            <h1>style</h1>{" "}
+      <div key={id}>
+
+      <div className="product"  >
+        <div className="product__info">
+          <p>{title}</p>
+          <p className="product__price">
+            <small>$</small>
+            <strong>{price}</strong>
           </p>
+          <div className="product__rating">
+            {Array(rating)
+              .fill()
+              .map((_, i) => (
+             <span>  <p>🌟</p></span> 
+              ))}
+          </div>
         </div>
-        <div className="products_images">
-          <img
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2021/GW/MSO/April/372x232_1_Low._SY116_CB670263840_.jpg"
-            alt=""
-          />
-          <a href="">
-            <h6>Explore all</h6>
-          </a>
-        </div>
+
+        <img src={image} alt="" />
+
+        <button>Add to Basket</button>
+      </div>
       </div>
     </React.Fragment>
   );
