@@ -10,14 +10,12 @@ function StateProvider({ children }) {
   console.log("this are my children", children);
   //   this the reducer function
   const reducer = (state, action) => {
-    
-    
-    console.log(action);
+    console.log(state)
     switch (action.type) {
       case "ADD_TO_CART":
         return {
           ...state,
-          cartItems: [...state.cartItems,action.Payload],
+          cartItems: [...state.cartItems, action.Payload],
         };
 
       default:
@@ -25,7 +23,7 @@ function StateProvider({ children }) {
     }
   };
   const [state, dispactch] = useReducer(reducer, initialstate);
-  console.log('this is new state' , state)
+  console.log("this is new state", state);
   return (
     <React.Fragment>
       <DispactchContext.Provider value={dispactch}>

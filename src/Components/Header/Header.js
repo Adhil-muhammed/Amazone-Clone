@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
+import { StateContext } from "../../Context/StateProvider";
 import "./Header.css";
 function Header() {
+  const States= useContext(StateContext);
+  console.log();
   return (
     <React.Fragment>
       <div className="header">
@@ -21,9 +24,9 @@ function Header() {
         <div className="header__nav">
           <div className="header__option">
             <span className="header__optionLineOne"> Hello</span>
-            <span className="header_ _optionLineTwo">
-              <Link to={"Signup"}> Guest </Link>
-            </span>
+            <Link to="/Signup">
+              <span className="header__optionLineTwo">Guest</span>
+            </Link>
           </div>
 
           <div className="header__option">
@@ -35,12 +38,15 @@ function Header() {
             <span className="header__optionLineOne">Your</span>
             <span className="header__optionLineTwo">Prime</span>
           </div>
-          <div className="header__optionBasket">
-            <Link to={"AddToCart"}>
+          <Link to="/AddToCart">
+            <div className="header__optionBasket">
               <ShoppingBasketIcon />
-            </Link>
-            <span className="header__optionLineTwo header__basketCount">0</span>
-          </div>
+              <span className="header__optionLineTwo header__basketCount">
+                {Object.keys(States.cartItems).length} 
+                {/* array object length finding  */}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </React.Fragment>

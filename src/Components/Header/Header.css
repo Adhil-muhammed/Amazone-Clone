@@ -42,13 +42,15 @@
 .header__optionLineTwo {
   font-size: 13px;
   font-weight: 800;
+  text-decoration: darkorange;
 }
 
 .header__optionBasket {
   display: flex;
   align-items: center;
-  color: white;
-text-decoration: none;
+  /* color: white; */
+
+
 }
 
 .header__basketCount {

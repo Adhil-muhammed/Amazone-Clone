@@ -4,6 +4,7 @@ import "./Products.css";
 function Products({ id, title, price, rating, image }) {
   const dispactch = useContext(DispactchContext);
   const AddBasket = () => {
+   
     dispactch({
       type: "ADD_TO_CART",
       Payload: {
