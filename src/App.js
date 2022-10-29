@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import HomePage from "./Pages/HomePage";
-
 import { StateProvider } from "./Context/StateProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./Components/Login/Login";

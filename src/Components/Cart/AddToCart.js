@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
-import { StateContext } from "../../Context/StateProvider";
+import { StateContext,DispactchContext } from "../../Context/StateProvider";
 import "./AddToCart";
 function AddToCart() {
   const CartPackage = useContext(StateContext);
-  console.log("this is CartItem ", CartPackage);
+  const dispacth=useContext(DispactchContext);
+
   const Products = CartPackage.cartItems.map((obj) => {
     return (
       <div key={obj.Id}>
@@ -12,6 +13,15 @@ function AddToCart() {
         <div>
           <h3 className="Crat_heading">{obj.Tittle}</h3>
         </div>
+        <button onClick={()=>{
+          dispacth({
+            type:'REMOVE_ITEM',
+            paylod:{
+
+              id:obj.Id
+            }
+          })
+        }} >remove</button>
       </div>
     );
   });
@@ -32,7 +42,7 @@ function AddToCart() {
               {/* {user?.email} */}
             </h3>
             <h2 className="checkout__title">Your shopping Basket</h2>
-            <div className="crat_image" >{Products}</div>
+            <div className="crat_image">{Products}</div>
 
             {/* {basket.map(item => (
             <CheckoutProduct
