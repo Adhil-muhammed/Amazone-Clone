@@ -9,29 +9,25 @@ const initialstate = {
 function StateProvider({ children }) {
   //   this the reducer function
   const reducer = (state, action) => {
-    console.log(state);
     switch (action.type) {
       case "ADD_TO_CART":
+        console.log(state);
         return {
           ...state,
-          cartItems: [...state.cartItems, action.Payload],
+          cartItems: [...state.cartItems, action.Payload]
         };
       case "REMOVE_ITEM":
+        console.log(action.paylod)
         const index = state.cartItems.findIndex(
-          (basketItem) => basketItem.id === action.Payload
-        );
-        console.log("action.Payload", action.Payload);
-        console.log("index", index);
-      const newBasket = [...state.cartItems];
-        console.log("newBasket", newBasket);
-        if (index === 0) {
+          (basketItem) => basketItem.image === action.Payload
+          );
+        const newBasket = [...state.cartItems];
+        if (index <= 0) {
           newBasket.splice(index, 1);
-          // console.log(
-          //   "newBasket.splice(index, 1);",
-          //   newBasket.splice(index, 1)
-          // );
         } else {
-          console.log("oops");
+          console.warn(
+            `Cant remove product (id: ${action.Payload}) as its not in basket!`
+          );
         }
         return {
           ...state,

@@ -17,4 +17,12 @@
     font-weight: 500;
     text-align: right;
   }
+.Cart_tittle{
+display: flex;
+}
+.heading_tittle{
+  font-family: sans-serif;
+  align-items: center;
+  font-size: 600;
+}
   

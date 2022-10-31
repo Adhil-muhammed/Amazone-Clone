@@ -1,31 +1,11 @@
 import React, { useContext } from "react";
 
-import { StateContext,DispactchContext } from "../../Context/StateProvider";
-import "./AddToCart";
+import { StateContext, DispactchContext } from "../../Context/StateProvider";
+import "./AddToCart.css";
 function AddToCart() {
   const CartPackage = useContext(StateContext);
-  const dispacth=useContext(DispactchContext);
-
-  const Products = CartPackage.cartItems.map((obj) => {
-    return (
-      <div key={obj.Id}>
-        <img className="crat_image" src={obj.Images} alt="" />
-        <div>
-          <h3 className="Crat_heading">{obj.Tittle}</h3>
-        </div>
-        <button onClick={()=>{
-          dispacth({
-            type:'REMOVE_ITEM',
-            paylod:{
-
-              id:obj.Id
-            }
-          })
-        }} >remove</button>
-      </div>
-    );
-  });
-
+  const dispacth = useContext(DispactchContext);
+  console.log(CartPackage);
   return (
     <React.Fragment>
       <div className="checkout">
@@ -41,22 +21,52 @@ function AddToCart() {
               Hello,
               {/* {user?.email} */}
             </h3>
-            <h2 className="checkout__title">Your shopping Basket</h2>
-            <div className="crat_image">{Products}</div>
+            {/* shopping  */}
+            {Object.keys(CartPackage.cartItems).length !== 0 ? (
+              <h2 className="checkout__title">Your shopping Basket</h2>
+            ) : (
+              <h2>your Shopping Cart empty</h2>
+            )}
+       
+            <div>
+              {CartPackage.cartItems.map((obj) => (
+                <div key={obj.Id}>
+                  <div className="Cartimage">
+                    <img src={obj.Images} alt="" />
+                  </div>
+                  <div className="Cart_tittle">
+                    <h3 className="heading_tittle">{obj.Tittle}</h3>
+                  </div>
+                  <button
+                    onClick={() => {
+                      dispacth({
+                        type: "REMOVE_ITEM",
+                        paylod: {
+                          // id: obj.Id,
+                          image: obj.Images,
+                        },
+                      });
+                    }}
+                  >
+                    Remove Item{" "}
+                  </button>
+                </div>
+              ))}
 
-            {/* {basket.map(item => (
-            <CheckoutProduct
-              id={item.id}
-              title={item.title}
+              {/* {basket.map(item => (
+                <CheckoutProduct
+                id={item.id}
+                title={item.title}
               image={item.image}
               price={item.price}
               rating={item.rating}
             />
           ))} */}
+            </div>
           </div>
-        </div>
 
-        <div className="checkout__right">{/* <Subtotal /> */}</div>
+          <div className="checkout__right">{/* <Subtotal /> */}</div>
+        </div>
       </div>
     </React.Fragment>
   );
